@@ -1,25 +1,57 @@
-# CODING AGENTS: READ THIS FIRST
+# anirudh-portfolio
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Personal portfolio website for **Anirudh Reddy Gotike** — Senior Software Engineer at Sun Life. Single-page, terminal/IDE-inspired aesthetic, dark-mode primary with a light-mode toggle.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+**Live:** _coming soon_
 
-## What you should do — IMPORTANT
+## Stack
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+- Plain HTML / CSS / JSX (React 18 + Babel standalone, loaded from CDN — no build step)
+- JetBrains Mono for everything mono, Inter for prose
+- Vanilla CSS with custom properties for theming
 
-**Read `project/index.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Layout
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+```
+.
+├── index.html      # entry point — bootstraps the React app
+├── styles.css      # full design system + section styles
+├── data.jsx        # portfolio content (bio, experience, projects, stack, certs)
+├── chrome.jsx      # tab strip, file rail, status bar
+└── sections.jsx    # hero, about, experience, projects, stack, certs, contact
+```
 
-## About the design files
+## Sections
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+1. **Hero** — terminal boot sequence with typewriter (`whoami`, `cat role.txt`, `uptime`)
+2. **About** — clean readable paragraphs + sidebar stats + tech pills
+3. **Experience** — vertical timeline of roles at Sun Life
+4. **Projects** — representative work cards (Kafka, REST gateway, React lib, CI/CD, etc.)
+5. **Tech Stack** — grouped by Languages, Frontend, Streaming, DevOps, Cloud & AI
+6. **Education & Certifications** — degrees + OCI GenAI Professional, CPR/AED, First Aid
+7. **Contact** — interactive terminal that reveals email/phone + handles
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+## Run locally
 
-## Bundle contents
+The site is fully static. Any local web server works:
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `My Website` project files (HTML prototypes, assets, components)
+```sh
+# python
+python3 -m http.server 8000
+
+# or node
+npx serve .
+```
+
+Then open http://localhost:8000.
+
+> Note: opening `index.html` directly via `file://` will fail because the JSX files are loaded as scripts — browsers block that on the file protocol. Use a local server.
+
+## Deploy
+
+Drop the repo on any static host: GitHub Pages, Netlify, Vercel, Cloudflare Pages. No build step required.
+
+## Contact
+
+- Email — anirudhreddy2920@gmail.com
+- LinkedIn — [linkedin.com/in/anirudhreddygotike](https://linkedin.com/in/anirudhreddygotike)
